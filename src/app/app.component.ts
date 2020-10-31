@@ -6,5 +6,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'encriptacion';
+
+  encriptacion = {
+    mensaje: '',
+    valor_k1: 1,
+    valor_k2: 1,
+    secuencia: '',
+    resultado: '',
+  }
+
+  desencriptacion = {
+    mensaje: '',
+    valor_k1: 1,
+    valor_k2: 1,
+    secuencia: '',
+    resultado: '',
+  }
+
+  constructor(){
+
+  }
+
+  encriptar(){
+    console.log("msje encriptado");
+    console.log(this.encriptacion);
+  }
+
+  desencriptar(){
+    console.log("desencriptando msje");
+  }
+
 }

@@ -1,21 +1,113 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
 <router-outlet></router-outlet>
+
+<div class="card text-center">
+    <div class="card-header">
+        TALLER N°2 - GESTIÓN DE SEGURIDAD INFORMATICA
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-10">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      ENCRIPTAR
+                    </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate>
+                                    <h3 style="text-align: center;">ENCRIPTACIÓN</h3>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label>MENSAJE</label>
+                                            <input type="text" class="form-control" placeholder="Ingresar mensaje a encriptar aquí..." [(ngModel)]="encriptacion.mensaje" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label>SECUENCIA</label>
+                                            <input type="text" class="form-control" placeholder="Ingresar secuencia aquí..." required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label>Valor K1</label>
+                                            <input type="number" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label>Valor K2</label>
+                                            <input type="number" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div align="center">
+                                        <button (click)="encriptar()" class="btn btn-primary">GENERAR MENSAJE ENCRIPTADO</button>
+                                    </div><br>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label>RESULTADO MENSAJE ENCRIPTADO</label>
+                                            <input type="text" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      DESENCRIPTAR
+                    </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate>
+                                    <h3 style="text-align: center;">DESENCRIPTACIÓN</h3>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label>MENSAJE</label>
+                                            <input type="text" class="form-control" placeholder="Ingresar mensaje a desencriptar aquí..." required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label>SECUENCIA</label>
+                                            <input type="text" class="form-control" placeholder="Ingresar secuencia aquí..." required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label>Valor K1</label>
+                                            <input type="number" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label>Valor K2</label>
+                                            <input type="number" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div align="center">
+                                        <button class="btn btn-primary" (click)="desencriptar()">DESENCRIPTAR MENSAJE</button>
+                                    </div><br>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label>RESULTADO MENSAJE DESENCRIPTADO</label>
+                                            <input type="text" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        Grupo: Eduardo Caldera - Charlotte Soto
+    </div>
+</div>
