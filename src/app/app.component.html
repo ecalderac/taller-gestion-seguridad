@@ -26,30 +26,32 @@
                                     <div class="form-row">
                                         <div class="col-md-12 mb-3">
                                             <label>MENSAJE</label>
-                                            <input type="text" class="form-control" placeholder="Ingresar mensaje a encriptar aquí..." [(ngModel)]="encriptacion.mensaje" required>
+                                            <input class="form-control" placeholder="Ingresar mensaje a encriptar aquí..." [ngModel]="encriptacion.mensaje | uppercase" (ngModelChange)="encriptacion.mensaje=$event" name="mensaje" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
-                                            <label>SECUENCIA</label>
-                                            <input type="text" class="form-control" placeholder="Ingresar secuencia aquí..." required>
+                                            <label>SECUENCIA </label>
+                                            <button class="btn btn-primary" (click)="btnc1_e()" style="margin: 4px;">C1</button>
+                                            <button class="btn btn-danger" (click)="btnc2_e()">C2</button>
+                                            <input class="form-control" placeholder="Ingresar secuencia aquí..." [ngModel]="encriptacion.secuencia | uppercase" (ngModelChange)="encriptacion.secuencia=$event" name="secuencia" type="text" disabled/>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label>Valor K1</label>
-                                            <input type="number" class="form-control" required>
+                                            <label>VALOR K1 PARA C1</label>
+                                            <input type="number" min="1" max="26" class="form-control" placeholder="Ingresar valor K1..." name="valor_k1" [(ngModel)]="encriptacion.valor_k1" required>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label>Valor K2</label>
-                                            <input type="number" class="form-control" required>
+                                            <label>VALOR K2 PARA C2</label>
+                                            <input type="number" min="1" max="26" class="form-control" placeholder="Ingresar valor K2..." name="valor_k2" [(ngModel)]="encriptacion.valor_k2" required>
                                         </div>
                                     </div>
                                     <div align="center">
-                                        <button (click)="encriptar()" class="btn btn-primary">GENERAR MENSAJE ENCRIPTADO</button>
+                                        <button (click)="encriptar()" class="btn btn-success">GENERAR MENSAJE ENCRIPTADO</button>
                                     </div><br>
                                     <div class="form-row">
                                         <div class="col-md-12 mb-3">
                                             <label>RESULTADO MENSAJE ENCRIPTADO</label>
-                                            <input type="text" class="form-control" disabled>
+                                            <input class="form-control" [ngModel]="encriptacion.resultado | uppercase" (ngModelChange)="encriptacion.resultado=$event" name="resultado" type="text" disabled/>
                                         </div>
                                     </div>
                                 </form>
@@ -71,30 +73,32 @@
                                     <div class="form-row">
                                         <div class="col-md-12 mb-3">
                                             <label>MENSAJE</label>
-                                            <input type="text" class="form-control" placeholder="Ingresar mensaje a desencriptar aquí..." required>
+                                            <input class="form-control" placeholder="Ingresar mensaje a desencriptar aquí..." [ngModel]="desencriptacion.mensaje | uppercase" (ngModelChange)="desencriptacion.mensaje=$event" name="mensaje2" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
-                                            <label>SECUENCIA</label>
-                                            <input type="text" class="form-control" placeholder="Ingresar secuencia aquí..." required>
+                                            <label>SECUENCIA </label>
+                                            <button class="btn btn-primary" (click)="btnc1_d()" style="margin: 4px;">C1</button>
+                                            <button class="btn btn-danger" (click)="btnc2_d()">C2</button>
+                                            <input class="form-control" placeholder="Ingresar secuencia aquí..." [ngModel]="desencriptacion.secuencia | uppercase" (ngModelChange)="desencriptacion.secuencia=$event" name="secuencia2" type="text" disabled/>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label>Valor K1</label>
-                                            <input type="number" class="form-control" required>
+                                            <label>VALOR K1 PARA C1</label>
+                                            <input type="number" min="1" max="26" class="form-control" placeholder="Ingresar valor K1..." name="valor_k12" [(ngModel)]="desencriptacion.valor_k1" required>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label>Valor K2</label>
-                                            <input type="number" class="form-control" required>
+                                            <label>VALOR K2 PARA C2</label>
+                                            <input type="number" min="1" max="26" class="form-control" placeholder="Ingresar valor K2..." name="valor_k22" [(ngModel)]="desencriptacion.valor_k2" required>
                                         </div>
                                     </div>
                                     <div align="center">
-                                        <button class="btn btn-primary" (click)="desencriptar()">DESENCRIPTAR MENSAJE</button>
+                                        <button class="btn btn-success" (click)="desencriptar()">DESENCRIPTAR MENSAJE</button>
                                     </div><br>
                                     <div class="form-row">
                                         <div class="col-md-12 mb-3">
                                             <label>RESULTADO MENSAJE DESENCRIPTADO</label>
-                                            <input type="text" class="form-control" disabled>
+                                            <input class="form-control" [ngModel]="desencriptacion.resultado | uppercase" (ngModelChange)="desencriptacion.resultado=$event" name="resultado2" type="text" disabled/>
                                         </div>
                                     </div>
                                 </form>
