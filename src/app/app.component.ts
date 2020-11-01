@@ -24,7 +24,6 @@ export class AppComponent {
   }
 
   public array_letras = ['a', 'b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z']; //27 LETRAS
-  public valor: string;
   public secuencia_buscar = [];
 
   constructor(){
@@ -55,25 +54,18 @@ export class AppComponent {
 
     //LEER Y ENCRIPTAR MSJE INGRESADO
     for(let i=0; i<this.encriptacion.mensaje.length;i++){
-      console.log(this.encriptacion.mensaje[i]);
       //CAMBIAR MSJE ENCRIPTADO CON C1 Y C2
       if(this.secuencia_buscar[i] == 1){ //BUSCAR EN C1
-        //let pos = this.encriptacion.mensaje[i].indexOf(secuenciaC1);
-        //BUSCAR EN LA SECUENCIA DE C1 EL CARACTER QUE ESTA EN MENSAJE Y REMPLAZARLO POR EL DE LA SECUENCIA
-        //UNA POSIBLE SOLUCION ES GUARDAR LA SECUENCIA C1-C2 COMO ARREGLO DE OBJETOS(EJM - [(a,f), (b,g), ....])
-
-        this.encriptacion.resultado = this.encriptacion.resultado.concat()
+        let pos = this.array_letras.indexOf(this.encriptacion.mensaje[i].toLocaleLowerCase());
+        this.encriptacion.resultado = this.encriptacion.resultado.concat(secuenciaC1[pos]);
       }else{ //BUSCAR EN C2
-
+        let pos = this.array_letras.indexOf(this.encriptacion.mensaje[i].toLocaleLowerCase());
+        this.encriptacion.resultado = this.encriptacion.resultado.concat(secuenciaC2[pos]);
       }
 
     }
-    let result;
-    result = this.encriptacion.mensaje.replace("X", " ");
-    //console.log(result);
-    //console.log(this.encriptacion.mensaje);
-    this.encriptacion.resultado = this.encriptacion.mensaje;
-
+    //let result;
+    //result = this.encriptacion.mensaje.replace("X", " ");
   }
 
   //GENERA UNA SECUENCIA COMPLETA A BUSCAR CON LA CANTIDAD DE CARACTERES QUE TIENE EL MSJE QUE SE VA A ENCRIPTAR
@@ -83,7 +75,6 @@ export class AppComponent {
         this.secuencia_buscar = this.secuencia_buscar.concat(this.secuencia_buscar)
       }
     }
-    console.log(this.secuencia_buscar);
   }
 
   //FUNCION PARA DESENCRIPTAR MENSAJE
@@ -98,7 +89,6 @@ export class AppComponent {
     }else{
       this.encriptacion.secuencia = this.encriptacion.secuencia + "C1"; //SE CONCATENA Y SE AGREGA
       this.secuencia_buscar.push(1);
-      console.log(this.secuencia_buscar);
     }
   }
 
@@ -109,7 +99,6 @@ export class AppComponent {
     }else{
       this.encriptacion.secuencia = this.encriptacion.secuencia + "C2";
       this.secuencia_buscar.push(2);
-      console.log(this.secuencia_buscar);
     }
   }
 
@@ -118,7 +107,6 @@ export class AppComponent {
     if(this.desencriptacion.secuencia.length >= 12){
       return 0;
     }else{
-      this.valor = "C1";
       this.desencriptacion.secuencia = this.desencriptacion.secuencia + "C1";
     }
   }
