@@ -26,7 +26,7 @@
                                     <div class="form-row">
                                         <div class="col-md-12 mb-3">
                                             <label>MENSAJE</label>
-                                            <input class="form-control" placeholder="Ingresar mensaje a encriptar aquí..." [ngModel]="encriptacion.mensaje | uppercase" (ngModelChange)="encriptacion.mensaje=$event" name="mensaje" type="text" />
+                                            <input (keyup)="validar($event.target.value)" class="form-control" placeholder="Ingresar mensaje a encriptar aquí..." [ngModel]="encriptacion.mensaje | uppercase" (ngModelChange)="encriptacion.mensaje=$event" name="mensaje" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -52,6 +52,7 @@
                                         <div class="col-md-12 mb-3">
                                             <label>RESULTADO MENSAJE ENCRIPTADO</label>
                                             <input class="form-control" [ngModel]="encriptacion.resultado | uppercase" (ngModelChange)="encriptacion.resultado=$event" name="resultado" type="text" disabled/>
+                                            <br><button class="btn btn-danger" (click)="reset(e)">Resetear</button>
                                         </div>
                                     </div>
                                 </form>
@@ -99,6 +100,7 @@
                                         <div class="col-md-12 mb-3">
                                             <label>RESULTADO MENSAJE DESENCRIPTADO</label>
                                             <input class="form-control" [ngModel]="desencriptacion.resultado | uppercase" (ngModelChange)="desencriptacion.resultado=$event" name="resultado2" type="text" disabled/>
+                                            <button class="btn btn-danger" (click)="reset(d)">Resetear</button>
                                         </div>
                                     </div>
                                 </form>
