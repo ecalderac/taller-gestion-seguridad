@@ -1,6 +1,4 @@
-//import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Component } from '@angular/core';
-//import { log } from 'console';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -34,34 +32,17 @@ export class AppComponent {
 
   //FUNCION VALIDAR CARACTERES
   validar(valor){
-    if(1){ //ENCRIPTA
-      for(let i=0; i<valor.length; i++){
-        if(valor[i]=="X"){
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Escriba de nuevo el mensaje sin X',
-            footer: '<a href>Why do I have this issue?</a>'
-          })
-          this.encriptacion.mensaje = "";
-        }
+    for(let i=0; i<valor.length; i++){
+      if(valor[i]=="X"){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Escriba de nuevo el mensaje sin X',
+          footer: '<a href></a>'
+        })
+        this.encriptacion.mensaje = "";
       }
     }
-    else //DESENCRIPTA
-    {
-      for(let i=0; i<valor.length; i++){
-        if(valor[i]=="X"){
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Escriba de nuevo el mensaje sin X'
-          })
-          this.desencriptacion.mensaje = "";
-        }
-      }
-    }
-    //REEMPLAZA LOS ESPACIOS EN BLANCO POR X
-    console.log(valor.replace(/\s/g,"X"));
   }
 
   //FUNCION PARA ENCRIPTAR MENSAJE
@@ -92,22 +73,18 @@ export class AppComponent {
     secuenciaC2AUX_S = this.array_letras.slice(0,k2);
     secuenciaC2 = secuenciaC2AUX_P.concat(secuenciaC2AUX_S);
 
+    //ESPACIOS EN BLANCO A X
+    let mensajex = this.encriptacion.mensaje.replace(/\s/g,"X");
     //LEER Y ENCRIPTAR MSJE INGRESADO
-    for(let i=0; i<this.encriptacion.mensaje.length;i++){
-
-      if(this.encriptacion.mensaje[i] == " "){ //SI ES ESPACIO VACIO ASIGNAR UNA X A LA ENCRIPTACION
-        this.encriptacion.resultado = this.encriptacion.resultado.concat('X');
-      }else{
-        //CAMBIAR MSJE ENCRIPTADO CON C1 Y C2
-        if(this.secuencia_buscar[i] == 1){ //BUSCAR EN C1
-          let pos = this.array_letras.indexOf(this.encriptacion.mensaje[i].toLocaleLowerCase());
-          this.encriptacion.resultado = this.encriptacion.resultado.concat(secuenciaC1[pos]);
-        }else{ //BUSCAR EN C2
-          let pos = this.array_letras.indexOf(this.encriptacion.mensaje[i].toLocaleLowerCase());
-          this.encriptacion.resultado = this.encriptacion.resultado.concat(secuenciaC2[pos]);
-        }
+    for(let i=0; i<mensajex.length;i++){
+      //CAMBIAR MSJE ENCRIPTADO CON C1 Y C2
+      if(this.secuencia_buscar[i] == 1){ //BUSCAR EN C1
+        let pos = this.array_letras.indexOf(mensajex[i].toLocaleLowerCase());
+        this.encriptacion.resultado = this.encriptacion.resultado.concat(secuenciaC1[pos]);
+      }else{ //BUSCAR EN C2
+        let pos = this.array_letras.indexOf(mensajex[i].toLocaleLowerCase());
+        this.encriptacion.resultado = this.encriptacion.resultado.concat(secuenciaC2[pos]);
       }
-
     }
     //let result;
     //result = this.encriptacion.mensaje.replace("X", " ");
@@ -157,20 +134,23 @@ export class AppComponent {
 
     //LEER Y DESENCRIPTAR MSJE INGRESADO
     for(let i=0; i<this.desencriptacion.mensaje.length;i++){
-      if(this.desencriptacion.mensaje[i]== "X"){ //SI ES ESPACIO VACIO ASIGNAR UNA X A LA ENCRIPTACION
-        this.desencriptacion.resultado = this.desencriptacion.resultado.concat(" ");
-        //i--;
-      }else{
-        //CAMBIAR MSJE DESENCRIPTADO CON C1 Y C2
-        if(this.secuencia_buscar[i] == 1){ //BUSCAR EN C1
-          let pos = secuenciaC1.indexOf(this.desencriptacion.mensaje[i].toLocaleLowerCase());
-          this.desencriptacion.resultado = this.desencriptacion.resultado.concat(this.array_letras[pos]);
-        }else{ //BUSCAR EN C2
-          let pos = secuenciaC2.indexOf(this.desencriptacion.mensaje[i].toLocaleLowerCase());
-          this.desencriptacion.resultado = this.desencriptacion.resultado.concat(this.array_letras[pos]);
-        }
+      //CAMBIAR MSJE DESENCRIPTADO CON C1 Y C2
+      if(this.secuencia_buscar[i] == 1){ //BUSCAR EN C1
+        let pos = secuenciaC1.indexOf(this.desencriptacion.mensaje[i].toLocaleLowerCase());
+        this.desencriptacion.resultado = this.desencriptacion.resultado.concat(this.array_letras[pos]);
+      }else{ //BUSCAR EN C2
+        let pos = secuenciaC2.indexOf(this.desencriptacion.mensaje[i].toLocaleLowerCase());
+        this.desencriptacion.resultado = this.desencriptacion.resultado.concat(this.array_letras[pos]);
       }
     }
+    //CAMBIAR X POR ESPACIOS
+    let mensajex = [...this.desencriptacion.resultado] 
+    for(let i=0;i<mensajex.length;i++){
+      if(mensajex[i]=="x"){
+        mensajex[i] = " ";
+      }
+    }
+    this.desencriptacion.resultado = mensajex.join("");
   }
 
   //AGREGANDO SECUENCIA C1 A ENCRIPTACION
@@ -227,7 +207,7 @@ export class AppComponent {
       this.desencriptacion.valor_k1 = 5;
       this.desencriptacion.valor_k2 = 19;
     }
-    console.log("reset");
+    //console.log("reset");
   }
 
 }
