@@ -90,23 +90,19 @@ export class AppComponent {
     //result = this.encriptacion.mensaje.replace("X", " ");
   }
 
-  //GENERA UNA SECUENCIA COMPLETA A BUSCAR CON LA CANTIDAD DE CARACTERES QUE TIENE EL MSJE QUE SE VA A ENCRIPTAR
-  generarSecuencia(){
-    if(this.secuencia_buscar.length < this.encriptacion.mensaje.length){
-      for(let i=this.secuencia_buscar.length; i<this.encriptacion.mensaje.length; i++){
-        this.secuencia_buscar = this.secuencia_buscar.concat(this.secuencia_buscar)
-      }
-    }
+//GENERA UNA SECUENCIA COMPLETA A BUSCAR CON LA CANTIDAD DE CARACTERES QUE TIENE EL MSJE QUE SE VA A ENCRIPTAR
+generarSecuencia(){
+  while(this.secuencia_buscar.length < this.encriptacion.mensaje.length){
+    this.secuencia_buscar = this.secuencia_buscar.concat(this.secuencia_buscar)
   }
+}
 
-  //GENERA UNA SECUENCIA COMPLETA A BUSCAR CON LA CANTIDAD DE CARACTERES QUE TIENE EL MSJE QUE SE VA A DESENCRIPTAR
-  generarSecuenciaD(){
-    if(this.secuencia_buscar.length < this.desencriptacion.mensaje.length){
-      for(let i=this.secuencia_buscar.length; i<this.desencriptacion.mensaje.length; i++){
-        this.secuencia_buscar = this.secuencia_buscar.concat(this.secuencia_buscar)
-      }
-    }
+//GENERA UNA SECUENCIA COMPLETA A BUSCAR CON LA CANTIDAD DE CARACTERES QUE TIENE EL MSJE QUE SE VA A DESENCRIPTAR
+generarSecuenciaD(){//121212
+  while(this.secuencia_buscar.length < this.desencriptacion.mensaje.length){
+    this.secuencia_buscar = this.secuencia_buscar.concat(this.secuencia_buscar);
   }
+}
 
   //FUNCION PARA DESENCRIPTAR MENSAJE
   desencriptar(){
