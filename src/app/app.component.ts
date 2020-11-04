@@ -214,19 +214,19 @@ export class AppComponent {
   }
 
   reset(val){
-    // if(val == 'e'){
-    //   this.encriptacion.mensaje = "";
-    //   this.encriptacion.resultado = "";
-    //   this.encriptacion.secuencia = "";
-    //   this.encriptacion.valor_k1 = 5;
-    //   this.encriptacion.valor_k2 = 19;
-    // }else{
-    //   this.desencriptacion.mensaje = "";
-    //   this.desencriptacion.resultado = "";
-    //   this.desencriptacion.secuencia = "";
-    //   this.desencriptacion.valor_k1 = 5;
-    //   this.desencriptacion.valor_k2 = 19;
-    // }
+    if(val == 1){
+      this.encriptacion.mensaje = "";
+      this.encriptacion.resultado = "";
+      this.encriptacion.secuencia = "";
+      this.encriptacion.valor_k1 = 5;
+      this.encriptacion.valor_k2 = 19;
+    }else{
+      this.desencriptacion.mensaje = "";
+      this.desencriptacion.resultado = "";
+      this.desencriptacion.secuencia = "";
+      this.desencriptacion.valor_k1 = 5;
+      this.desencriptacion.valor_k2 = 19;
+    }
     console.log("reset");
   }
 
